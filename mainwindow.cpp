@@ -27,12 +27,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&m_serialPort, SIGNAL(readyRead()), this, SLOT(onReadData()));
 
     /* 设置坐标轴标签名称 */
-    ui->qCustomPlot->xAxis->setLabel("时间");
-    ui->qCustomPlot->yAxis->setLabel("");
+    ui->qCustomPlot->xAxis->setLabel("次数");
+    ui->qCustomPlot->yAxis->setLabel("温度");
 
     /* 设置坐标轴显示范围,否则我们只能看到默认的范围 */
     ui->qCustomPlot->xAxis->setRange(0, 10);
-    ui->qCustomPlot->yAxis->setRange(0, 2000);
+    ui->qCustomPlot->yAxis->setRange(0, 100);
 
     /* 查找可用的串口 */
     foreach(const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
@@ -103,7 +103,7 @@ void MainWindow::onUpdateChart()
 
 void MainWindow::onCreateTestData()
 {
-    m_serialUpdateData = rand() % 1000 + 1000;
+    m_serialUpdateData = rand() % 100 + 10;
 }
 
 void MainWindow::onTestClicked(bool status)
