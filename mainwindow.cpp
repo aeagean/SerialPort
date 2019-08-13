@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    /* 向绘图区域QCustomPlot(从widget提升来的)添加一条曲线 */
+    /* 向绘图区域QCustomPlot添加一条曲线 */
     ui->qCustomPlot->addGraph();
 
     m_updateChartTimer.start(1000);
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qCustomPlot->xAxis->setLabel("次数");
     ui->qCustomPlot->yAxis->setLabel("温度");
 
-    /* 设置坐标轴显示范围,否则我们只能看到默认的范围 */
+    /* 设置坐标轴显示范围 */
     ui->qCustomPlot->xAxis->setRange(0, 10);
     ui->qCustomPlot->yAxis->setRange(0, 100);
 
